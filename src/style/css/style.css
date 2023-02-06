@@ -422,6 +422,28 @@ button {
   border-color: transparent;
 }
 
+
+.question {
+  display: inline-block; 
+  /* border-radius: 10%; */
+  height: fit-content;
+  min-height: 5em;
+  text-align: left;
+  color: white;
+  resize: none;
+  font-size: small;
+  background: var(--theme-accent);
+}
+
+.question::placeholder {
+  color: white;
+  /* opacity: 0.5; */
+}
+
+.questionAsked{
+  text-align: left;
+}
+
 .button, .button-link, .button-link-2xl, .button-link-xl, .button-link-lg, .button-link-md, .button-link-sm, .button-link-xs, .button-ghost, .button-ghost-2xl, .button-ghost-xl, .button-ghost-lg, .button-ghost-md, .button-ghost-sm, .button-ghost-xs, .button-outline, .button-outline-2xl, .button-outline-xl, .button-outline-lg, .button-outline-md, .button-outline-sm, .button-outline-xs, .button-solid, .button-solid-2xl, .button-solid-xl, .button-solid-lg, .button-solid-md, .button-solid-sm, .button-solid-xs {
   transition: 0.2s ease;
   -webkit-transition: 0.2s ease;
@@ -606,6 +628,7 @@ button {
 .test {
   position: relative;
   background: transparent;
+  background-color: var(--theme-backgound-image);
   flex-flow: column wrap;
   z-index: 1;
 }
@@ -615,7 +638,7 @@ button {
   clip-path: circle(53.4% at 10% 17%);
   width: 100%;
   height: 100%;
-  background: rgba(143, 156, 163, 0.2);
+  /* background: rgba(143, 156, 163, 0.2); */
   top: 5%;
   left: 0;
   font-size: 10rem;
@@ -627,7 +650,7 @@ button {
   clip-path: circle(13.3% at 73% 74%);
   width: 100%;
   height: 100%;
-  background: rgba(150, 232, 205, 0.6);
+  /* background: rgba(150, 232, 205, 0.6); */
   top: 5%;
   left: 0;
   font-size: 10rem;
@@ -705,6 +728,7 @@ html[data-theme=light] .solarize-center {
 
 html[data-theme=dark] {
   --theme-background: #171a1c;
+  --theme-backgound-image: url(../../assets/img/escheresque_ste.png);
   --theme-forground: #e0e6eb;
   --theme-accent: #67e4bb;
   --theme-text-gray: #49545a;
@@ -728,10 +752,12 @@ html[data-theme=dark] {
   --shadow-md: 0 1px 5px 0 rgb(0 0 0 / 30%), 0 2px 10px 2px rgb(0 0 0 / 15%);
   --shadow-lg: 0 1px 10px 0 rgb(0 0 0 / 30%), 0 4px 20px 10px rgb(0 0 0 / 15%);
   --shadow-xl: 0 2px 20px 0 rgb(0 0 0 / 30%), 0 4px 50px 20px rgb(0 0 0 / 15%);
+  
 }
 
 html[data-theme=light] {
   --theme-background: #e0e6eb;
+  --theme-backgound-image: url(../../assets/img/what-the-hex.png);
   --theme-forground: #171a1c;
   --theme-accent: #6791e4;
   --theme-text-gray: #8f9ca3;
@@ -778,6 +804,7 @@ html[data-theme=light] {
 
 html, body {
   background: var(--theme-background);
+  background-image: var(--theme-backgound-image);
   color: var(--theme-forground);
   font-size: 18px;
   z-index: 0;

@@ -1,0 +1,70 @@
+  
+  .darker {
+    border-color: #ccc;
+    background-color: #ddd;
+  }
+  
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .container-left {
+    margin-bottom: 3vh;
+    max-width: 500px; 
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .container-right {
+
+    margin-bottom: 5vh;
+    max-width: 500px; 
+       border-radius: 50%;
+
+  }
+  
+  .response{
+    text-align: end;
+  }
+
+  .time-right {
+    float: right;
+    color: #aaa;
+    font-size: small
+  }
+  
+  .time-left {
+    float: left;
+    color: #999;
+    font-size: small
+  }
+
+.wrapper {
+    border: 1px solid blue;
+}
+
+
+.micro_and_send {
+  display: inline-block; 
+}
+ .microphone-recording {
+  color: red;
+ }
+
+
+
+ .microphone > button {
+  border-radius: 50%;
+ }
+ .btnSend{
+  border-radius: 50%;
+ }
+
+ .btnSpeaker{
+  border-radius: 50%;
+  display: flex;
+  align-self: flex-end;
+ }
+ 
