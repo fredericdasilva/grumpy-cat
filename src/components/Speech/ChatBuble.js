@@ -51,8 +51,10 @@ export const ChatBuble = (props) => {
 
     prompt = props.previousConversation + "\n" + prompt;
     axios
-      // .post("http://localhost:8000/openai/" + props.mode, { prompt })
-      .post("http://104.155.133.110:8080/openai/" + props.mode, { prompt })
+      //.post("http://localhost:8000/openai/" + props.mode, { prompt })
+      //.post("http://192.168.1.178:8000/openai/" + props.mode, { prompt })
+      .post("http://34.98.94.139/openai/" + props.mode, { prompt })
+      //.post("http://104.155.133.110:8080/openai/" + props.mode, { prompt })
       .then(async function (response) {
         console.log(response);
 
@@ -64,6 +66,7 @@ export const ChatBuble = (props) => {
             response.data.reponse ??
             response.data.response ??
             response.data ??
+            response.prompt ??
             response.output ??
             response.réponse;
 

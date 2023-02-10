@@ -1,5 +1,5 @@
 export async function isMicrophoneAllowed() {
-  console.log("isMicrophoneAllowed");
+  //console.log("isMicrophoneAllowed");
   navigator.permissions
     .query({
       name: "microphone",
