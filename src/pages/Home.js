@@ -9,10 +9,6 @@ export const Home = () => {
   const [completionModechecked, setCompletionModeChecked] = useState(true);
 
   useEffect(() => {
-    console.log("imageModechecked !!" + completionModechecked);
-  }, [completionModechecked]);
-
-  useEffect(() => {
     enableAutoTTS();
   });
 
@@ -31,10 +27,10 @@ export const Home = () => {
           }
           optionLabels={["Mode Chat", "Mode Image"]}
         />
-        <h4 style={{ color: "var(--color-gray-700)" }}>Welcome</h4>
+        {/* <h4 style={{ color: "var(--color-gray-700)" }}>Welcome</h4> */}
         <p className="color-gray-500 my-md font-default">
-          My name is Grumpy cat, I know a lot of stuff thanks to OpenAI api
-          (Chat GPT). Let's discuss !
+          I am "Grumpy cat", I know a lot of stuff thanks to OpenAI api (Chat
+          GPT). Let's discuss !
         </p>
       </Card>
 

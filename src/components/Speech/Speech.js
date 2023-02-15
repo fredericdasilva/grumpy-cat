@@ -4,6 +4,7 @@ import { ChatBuble } from "./ChatBuble";
 
 export const Speech = ({ completionModechecked }) => {
   const [mute, setMute] = useState(false);
+  const [onError, setOnError] = useState(false);
   // const [mode, setMode] = useState("completion");
   const [previousConversation, setPreviousConversation] = useState("");
   const [speaking, setSpeaking] = useState(false);
@@ -25,6 +26,7 @@ export const Speech = ({ completionModechecked }) => {
               }}
               onImageProvided={() => setQuestions(nbQuestions + 1)}
               onSpeak={(b) => setSpeaking(b)}
+              setOnError={setOnError}
             />
           </div>
         ))}
@@ -42,7 +44,7 @@ export const Speech = ({ completionModechecked }) => {
         )}
       </button>
 
-      <Cat speaking={speaking} />
+      <Cat speaking={speaking} onError={onError} />
     </>
   );
 };

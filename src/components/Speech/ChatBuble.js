@@ -7,7 +7,7 @@ import { useSpeechSynthesis } from "react-speech-kit";
 import { displayCurrentTime } from "../../utility/DateHelper";
 import "./../../style/css/ChatBuble.css";
 import { capitalizeFirstLetter } from "../../utility/StringHelper";
-import { isMicrophoneAllowed } from "../../utility/MediaHelper";
+import { isMicrophoneAllowed, isMobile } from "../../utility/MediaHelper";
 import { LazyImage } from "../Image/LazyImage";
 import { Spinner } from "../Spinner/Spinner";
 
@@ -42,21 +42,24 @@ export const ChatBuble = (props) => {
   }, [props.mute]);
 
   useEffect(() => {
-    setIsMicroReady(isMicrophoneAllowed());
+    //Disable Microphone for tablet and smartphone
+    setIsMicroReady(isMicrophoneAllowed() && !isMobile());
   }, []);
 
   const callOpenai = async (prompt) => {
     setDisplaySpinner(true);
     setQuestionDate(displayCurrentTime());
 
+    console.log("V4");
+
     prompt = props.previousConversation + "\n" + prompt;
     axios
-      //.post("http://localhost:8000/openai/" + props.mode, { prompt })
-      //.post("http://192.168.1.178:8000/openai/" + props.mode, { prompt })
-      .post("http://34.98.94.139/openai/" + props.mode, { prompt })
-      //.post("http://104.155.133.110:8080/openai/" + props.mode, { prompt })
+      .post(process.env.REACT_APP_BACKEND_URL + "/openai/" + props.mode, {
+        prompt,
+      })
       .then(async function (response) {
         console.log(response);
+        props.setOnError(false);
 
         setDisplaySpinner(false);
 
@@ -87,6 +90,7 @@ export const ChatBuble = (props) => {
       })
       .catch(function (error) {
         setDisplaySpinner(false);
+        props.setOnError(true);
         console.error(error);
       });
   };
@@ -128,8 +132,9 @@ export const ChatBuble = (props) => {
               <div className="micro_and_send">
                 {/* Micro icon */}
                 <div className="microphone">
-                  {{ browserSupportsSpeechRecognition } && isMicroReady ? (
-                    !listening ? (
+                  {{ browserSupportsSpeechRecognition } &&
+                    isMicroReady &&
+                    (!listening ? (
                       <button
                         data-toggle="tooltip"
                         title="Speak to your microphone"
@@ -158,15 +163,7 @@ export const ChatBuble = (props) => {
                           }}
                         />
                       </button>
-                    )
-                  ) : (
-                    <button
-                      data-toggle="tooltip"
-                      title="Your microphone is not enabled"
-                    >
-                      <i className="icon-microphone-off" />
-                    </button>
-                  )}
+                    ))}
                 </div>
 
                 {/* Send button  */}
